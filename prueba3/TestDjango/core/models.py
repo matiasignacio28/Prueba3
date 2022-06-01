@@ -21,3 +21,19 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombreProducto
 
+opciones_consultas = [
+    [0, "consulta"],
+    [1, "reclamo"],
+    [2, "sugerencia"],
+    [3, "felicitaciones"]
+]
+
+
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=50)
+    correo = models.EmailField()
+    tipo_cosulta = models.IntegerField(choices=opciones_consultas)
+    mensaje = models.TextField()
+    
+    def __str__(self):
+        return self.nombre

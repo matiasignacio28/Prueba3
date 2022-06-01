@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ContactoForm
 from .models import Producto
 
 # Create your views here.
@@ -14,6 +14,17 @@ def index(request):
     }
     return render(request, 'core/index.html', data)
     
+def contacto(request):
+    data = {
+        'form': ContactoForm()
+    }
+    if request.method == 'POST':
+        formulario = ContactoForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Mensaje enviado")
+
+    return render(request, 'core/contacto.html', data)
 
 
 def registro(request):
