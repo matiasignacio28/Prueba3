@@ -54,7 +54,7 @@
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
 
-							<a href="index.html"><img src="{% static 'core/images/home/logofinal.jpeg'%}" class="img-fluid tlogo" alt="" /></a>
+							<a href="{% url 'index' %}"><img src="{% static 'core/images/home/logofinal.jpeg'%}" class="img-fluid tlogo" alt="" /></a>
 
 						</div>
 					
@@ -64,7 +64,7 @@
 							<ul class="nav navbar-nav">
 								
 								<li><a href="ofertas.html"><i class="fa fa-star"></i>Ofertas</a></li>
-								<li ><a href="cart.html"><i class="fa fa-shopping-cart"></i> Carro de compras</a></li>
+								
 								{% if user.is_authenticated %}
 								Bienvenido {{ user.username }}!
 								
@@ -96,26 +96,9 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 
-								<li><a href="index.html" class="active">CiberPet</a></li>
-								<li class="dropdown"><a href="index.html">Tienda<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="productos.html">Productos</a></li>
-										<li><a href="Higiene.html">Higiene</a></li> 
-										<li><a href="ofertas.html">Ofertas</a></li>  
-
-										<li><a href="transporteyseguridad.html">Transporte y seguridad</a></li> 
-										
-                                    </ul>
-                                </li> 
-								<li class="dropdown"><a href="#">Alimentos<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="AlimentoPerros.html">Perros</a></li>
-										<li><a href="AlimentoGatos.html">Gatos</a></li>
-										
-                                    </ul>
-                                </li> 
-								
-								<li><a href="contact-us.html">Contacto</a></li>
+								<li><a href="{% url 'index' %}" class="active">CiberPet</a></li>
+								<li><a href="{% url 'contacto' %}">Contacto</a></li>
+                                <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
 							</ul>
 						</div>
 					</div>
@@ -173,102 +156,90 @@
         </div>
     </section> 
 
-<footer id="footer" ><!--Footer-->
-    <div class="footer-top" >
-
-        
-        <div class="container">
+    <footer id="footer" ><!--Footer-->
+        <div class="footer-top" >
+    
             
-            <div class="row">
-                <div class="col-sm-3">
-                    
-                    
-                    <div class="companyinfo">
-                        <img src="{% static 'core/images/home/2.png'%}" class="img-fluid tlogo" alt="" />
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-3">
                         
-                        <p>Encuentra cada uno de nuestros servicios y contáctanos por nuestro diferentes medios</p>
-                    </div>
-                </div>
-                
-            
-                
-    
-    <div class="footer-widget">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>Menu</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="index.html">CiberPet</a></li>
-                            <li><a href="index.html">Tienda </a></li>
-                            <li><a href="AlimentoGatos.html">Alimentos </a></li>
-                            <li><a href="contact-us.html">Contacto </a></li>
+                        
+                        <div class="companyinfo">
+                            <img src="{% static 'core/images/home/2.png'%}" class="img-fluid tlogo" alt="" />
                             
-                        </ul>
+                            <p>Encuentra cada uno de nuestros servicios y contáctanos por nuestro diferentes medios</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>Marcas</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Fit Fomula</a></li>
-                            <li><a href="#">Royal Canin</a></li>
-                            <li><a href="#">Optimun</a></li>
-                            <li><a href="#">Purina Pro Plan </a></li>
-                            <li><a href="#">Tase of the Wild</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>Categorias</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="AlimentoPerros.html">Alimento Perros</a></li>
-                            <li><a href="AlimentoGatos.html">Alimento Gatos </a></li>
-                            
-                            <li><a href="transporteyseguridad.html">Transporte y Seguridad</a></li>
-                            <li><a href="ofertas.html">Ofertas</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>Redes Sociales</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instragram</a></li>
-                            <li><a href="#">+22 54 62 821</a></li>
-                            <li><a href="#">info@ciberpet.cl</a></li>
-                            <li><a href="#">Tik Tok</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-sm-offset-1">
-                    <div class="single-widget">
-                        <h2>Envianos tu duda</h2>
-                        <form action="#" class="searchform">
-                            <input type="text" placeholder="Ingresa tu email " />
-                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                            <p>Te responderemos  <br />a la brevedad...</p>
-                        </form>
-                    </div>
-                </div>
+                    
                 
+                    
+        
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Menu</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="{% url 'index' %}">CiberPet</a></li>
+                                <li><a href="{% url 'contacto' %}">Contacto </a></li>
+                                <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Marcas</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Fit Fomula</a></li>
+                                <li><a href="#">Royal Canin</a></li>
+                                <li><a href="#">Optimun</a></li>
+                                <li><a href="#">Purina Pro Plan </a></li>
+                                <li><a href="#">Tase of the Wild</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Categorias</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="AlimentoPerros.html">Alimento Perros</a></li>
+                                <li><a href="AlimentoGatos.html">Alimento Gatos </a></li>
+                                
+                                <li><a href="transporteyseguridad.html">Transporte y Seguridad</a></li>
+                                <li><a href="ofertas.html">Ofertas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Redes Sociales</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Instragram</a></li>
+                                <li><a href="#">+22 54 62 821</a></li>
+                                <li><a href="#">info@ciberpet.cl</a></li>
+                                <li><a href="#">Tik Tok</a></li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row">
-                <p class="pull-left">Copyright © 2022 CiberPet Inc. All rights reserved.</p>
-                
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Copyright © 2022 CiberPet Inc. All rights reserved.</p>
+                    
+                </div>
             </div>
         </div>
-    </div>
-    
-</footer><!--/Footer-->
+        
+    </footer><!--/Footer-->
 
 
 

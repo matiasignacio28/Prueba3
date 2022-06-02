@@ -77,7 +77,7 @@
 							<ul class="nav navbar-nav">
 								
 								<li><a href="ofertas.html"><i class="fa fa-star"></i>Ofertas</a></li>
-								<li ><a href="cart.html"><i class="fa fa-shopping-cart"></i> Carro de compras</a></li>
+								
 								
 								{% if user.is_authenticated %}
 								@{{ user.username }}!
@@ -115,10 +115,11 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 
-								<li><a href="index.html" class="active">CiberPet</a></li>
+								<li><a href="{% url 'index' %}" class="active">CiberPet</a></li>
 							
 								
-								<li><a href="contact-us.html">Contacto</a></li>
+								<li><a href="{% url 'contacto' %}">Contacto</a></li>
+								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
 							</ul>
 						</div>
 					</div>
@@ -221,7 +222,7 @@
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Articulos destacados</h2>
 						{% load humanize %}
-						{% for p in productos %}
+						{% for p in entity %}
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -242,7 +243,11 @@
 						</div>
 						{% endfor %}
 						
+						
 					</div><!--features_items-->
+					<div>
+						{% include 'core/paginator.html' %}
+					</div>
 					
 					
 					
@@ -280,9 +285,8 @@
 							<h2>Menu</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{% url 'index' %}">CiberPet</a></li>
-								<li><a href="{% url 'index' %}">Tienda </a></li>
-								<li><a href="AlimentoGatos.html">Alimentos </a></li>
-								<li><a href="contact-us.html">Contacto </a></li>
+								<li><a href="{% url 'contacto' %}">Contacto </a></li>
+								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
 								
 							</ul>
 						</div>
@@ -323,17 +327,6 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3 col-sm-offset-1">
-						<div class="single-widget">
-							<h2>Envianos tu duda</h2>
-							<form action="#" class="searchform">
-								<input type="text" placeholder="Ingresa tu email " />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Te responderemos  <br />a la brevedad...</p>
-							</form>
-						</div>
-					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -374,6 +367,6 @@
 
 		{% endfor %}
 	{% endif %}
-	
+
 </body>
 </html>

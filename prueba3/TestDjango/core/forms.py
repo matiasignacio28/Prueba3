@@ -14,4 +14,13 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', "first_name", "last_name", "email", "password1", "password2"]
+
+
+class ProductoForm(forms.ModelForm):
+
+    imagen = forms.ImageField(required=False)
+
+    class Meta:
+        model = Producto
+        fields = '__all__'
     

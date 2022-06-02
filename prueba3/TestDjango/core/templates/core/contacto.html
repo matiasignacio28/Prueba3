@@ -63,8 +63,10 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
+							
 
-							<a href="index.html"><img src="{% static 'core/images/home/logofinal.jpeg'%}" class="img-fluid tlogo" alt="" /></a>
+							<a href="{% url 'index' %}"><img src="{% static 'core/images/home/logofinal.jpeg'%}" class="img-fluid tlogo" alt="" /></a>
+
 
 						</div>
 					
@@ -74,9 +76,10 @@
 							<ul class="nav navbar-nav">
 								
 								<li><a href="ofertas.html"><i class="fa fa-star"></i>Ofertas</a></li>
-								<li ><a href="cart.html"><i class="fa fa-shopping-cart"></i> Carro de compras</a></li>
+								
+								
 								{% if user.is_authenticated %}
-								Bienvenido {{ user.username }}!
+								@{{ user.username }}!
 								
 								<li><a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Cerrar Sesión</a></li>
 								{% else %}
@@ -84,13 +87,18 @@
 								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Iniciar Sesión</a></li>
 								<li><a href="{% url 'registro' %}"><i class="fa fa-lock"></i> Registrate</a></li>
 								{% endif %}
+								
+								
+
 							</ul>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
+		
+								
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -106,26 +114,11 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 
-								<li><a href="index.html" class="active">CiberPet</a></li>
-								<li class="dropdown"><a href="index.html">Tienda<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="productos.html">Productos</a></li>
-										<li><a href="Higiene.html">Higiene</a></li> 
-										<li><a href="ofertas.html">Ofertas</a></li>  
-
-										<li><a href="transporteyseguridad.html">Transporte y seguridad</a></li> 
-										
-                                    </ul>
-                                </li> 
-								<li class="dropdown"><a href="#">Alimentos<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="AlimentoPerros.html">Perros</a></li>
-										<li><a href="AlimentoGatos.html">Gatos</a></li>
-										
-                                    </ul>
-                                </li> 
+								<li><a href="{% url 'index' %}" class="active">CiberPet</a></li>
+							
 								
-								<li><a href="contact-us.html">Contacto</a></li>
+								<li><a href="{% url 'contacto' %}">Contacto</a></li>
+								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
 							</ul>
 						</div>
 					</div>
@@ -250,10 +243,9 @@
 						<div class="single-widget">
 							<h2>Menu</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="index.html">CiberPet</a></li>
-								<li><a href="index.html">Tienda </a></li>
-								<li><a href="AlimentoGatos.html">Alimentos </a></li>
-								<li><a href="contact-us.html">Contacto </a></li>
+								<li><a href="{% url 'index' %}">CiberPet</a></li>
+								<li><a href="{% url 'contacto' %}">Contacto </a></li>
+								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
 								
 							</ul>
 						</div>
@@ -294,17 +286,6 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3 col-sm-offset-1">
-						<div class="single-widget">
-							<h2>Envianos tu duda</h2>
-							<form action="#" class="searchform">
-								<input type="text" placeholder="Ingresa tu email " />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Te responderemos  <br />a la brevedad...</p>
-							</form>
-						</div>
-					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -337,9 +318,8 @@
 		
 		<script>
 			Swal.fire({
-				"title": "Gracias por contactarnos",
-				"text": "{{m}}",
-				"icon": "success"
+				"title": "{{m}}",
+				"icon": "info"
 			})
 
 		</script>
