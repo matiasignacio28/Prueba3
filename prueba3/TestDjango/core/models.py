@@ -17,6 +17,7 @@ class Producto(models.Model):
     precio = models.IntegerField(verbose_name='precio del producto')
     Categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="productos", null=True)
+    oferta = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nombreProducto
@@ -37,3 +38,4 @@ class Contacto(models.Model):
     
     def __str__(self):
         return self.nombre
+

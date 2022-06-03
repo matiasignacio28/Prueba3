@@ -7,7 +7,8 @@
       "sku": 2123124123,
       "precio": 18990,
       "Categoria": 4,
-      "imagen": "productos/bolsoHuella.jpg"
+      "imagen": "productos/bolsoHuella_avj6kri.jpg",
+      "oferta": false
     }
   },
   {
@@ -18,18 +19,20 @@
       "sku": 2123124124,
       "precio": 19990,
       "Categoria": 4,
-      "imagen": "productos/mochila_gris.jpg"
+      "imagen": "productos/mochila_gris.jpg",
+      "oferta": false
     }
   },
   {
     "model": "core.producto",
     "pk": 3,
     "fields": {
-      "nombreProducto": "Bolso Con Dise±o Gato",
+      "nombreProducto": "cama redonda",
       "sku": 2123124125,
-      "precio": 21990,
-      "Categoria": 4,
-      "imagen": "productos/bolsoGato.jpg"
+      "precio": 18990,
+      "Categoria": 6,
+      "imagen": "productos/camaRedonda.jpg",
+      "oferta": false
     }
   },
   {
@@ -40,7 +43,8 @@
       "sku": 2123124126,
       "precio": 3990,
       "Categoria": 2,
-      "imagen": "productos/Collar-con-luz-led-verde.jpg"
+      "imagen": "productos/Collar-con-luz-led-verde.jpg",
+      "oferta": false
     }
   },
   {
@@ -49,20 +53,22 @@
     "fields": {
       "nombreProducto": "Collar Gato Reflectante Lila",
       "sku": 2123124127,
-      "precio": 2990,
+      "precio": 3990,
       "Categoria": 2,
-      "imagen": "productos/collar-morado.jpg"
+      "imagen": "productos/collar-morado.jpg",
+      "oferta": false
     }
   },
   {
     "model": "core.producto",
     "pk": 6,
     "fields": {
-      "nombreProducto": "ArnÚs + Correa",
+      "nombreProducto": "Arnes + Correa",
       "sku": 2123124128,
       "precio": 7990,
       "Categoria": 3,
-      "imagen": "productos/morado-azul.jpg"
+      "imagen": "productos/morado-azul.jpg",
+      "oferta": false
     }
   },
   {
@@ -73,18 +79,20 @@
       "sku": 2123124129,
       "precio": 27990,
       "Categoria": 6,
-      "imagen": "productos/cama-coloress.jpg"
+      "imagen": "productos/cama-coloress.jpg",
+      "oferta": true
     }
   },
   {
     "model": "core.producto",
     "pk": 8,
     "fields": {
-      "nombreProducto": "Rasgu±ador Jirafa",
+      "nombreProducto": "Rasgu±ador gorila",
       "sku": 2123124130,
-      "precio": 48990,
+      "precio": 29990,
       "Categoria": 5,
-      "imagen": "productos/42505_Catit_Zoo-scratcher-L-Giraffe_Panel-1_EN.jpeg"
+      "imagen": "productos/gorila_castit_1.jpeg",
+      "oferta": false
     }
   },
   {
@@ -95,19 +103,92 @@
       "sku": 2123124131,
       "precio": 6990,
       "Categoria": 2,
-      "imagen": ""
+      "imagen": "productos/coastal-collar-fashion-resolve_PanLRZb.jpg",
+      "oferta": true
     }
   },
   {
     "model": "core.producto",
     "pk": 10,
     "fields": {
-      "nombreProducto": "Rascador rino",
+      "nombreProducto": "Rascador hipo",
       "sku": 2123124132,
       "precio": 40990,
       "Categoria": 5,
-      "imagen": ""
+      "imagen": "productos/hipopotamo-catit.png",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 11,
+    "fields": {
+      "nombreProducto": "arnÚs anti-tir¾n sujetador",
+      "sku": 2123124133,
+      "precio": 17990,
+      "Categoria": 3,
+      "imagen": "productos/arnesAntiTiron.jpg",
+      "oferta": true
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 12,
+    "fields": {
+      "nombreProducto": "Cama dise±o zig-zag gris",
+      "sku": 2123124134,
+      "precio": 24990,
+      "Categoria": 6,
+      "imagen": "productos/camas-RAYAS.jpg",
+      "oferta": true
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 13,
+    "fields": {
+      "nombreProducto": "Rasgu±ador elefante",
+      "sku": 2123124136,
+      "precio": 34990,
+      "Categoria": 5,
+      "imagen": "productos/elefante_catit_1.jpeg",
+      "oferta": true
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 14,
+    "fields": {
+      "nombreProducto": "arnes h marge simpson",
+      "sku": 2123124135,
+      "precio": 12990,
+      "Categoria": 3,
+      "imagen": "productos/marge-simpson-dog-h-harness.jpg",
+      "oferta": true
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 15,
+    "fields": {
+      "nombreProducto": "arnes + correa marinero",
+      "sku": 2123124137,
+      "precio": 5990,
+      "Categoria": 3,
+      "imagen": "productos/arnes-nuevo.jpg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 16,
+    "fields": {
+      "nombreProducto": "bolso con bolsillos",
+      "sku": 2123124138,
+      "precio": 28990,
+      "Categoria": 4,
+      "imagen": "productos/bolso-nuevo.jpg",
+      "oferta": true
     }
   }
-
   ]

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Contacto | CiberPet</title>
+    <title>Modificar producto | CiberPet</title>
 
     <link href="{% static 'core/css/bootstrap.min.css'%}" rel="stylesheet">
     <link href="{% static 'core/css/font-awesome.min.css'%}" rel="stylesheet">
@@ -16,8 +16,10 @@
     <link href="{% static 'core/css/animate.css'%}" rel="stylesheet">
 	<link href="{% static 'core/css/main.css'%}" rel="stylesheet">
 	<link href="{% static 'core/css/responsive.css'%}" rel="stylesheet">
-	
-        
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
     <link rel="shortcut icon" href="{% static 'core/images/ico/favicon.ico'%}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'core/images/ico/apple-touch-icon-144-precomposed.png'%}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'core/images/ico/apple-touch-icon-114-precomposed.png'%}">
@@ -106,7 +108,7 @@
 								<li><a href="{% url 'index' %}" class="active">CiberPet</a></li>
 								
 								<li><a href="{% url 'contacto' %}">Contacto</a></li>
-								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                                <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
 								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
 							</ul>
 						</div>
@@ -138,64 +140,31 @@
 	
 	<section id="form"><!--form-->
         {% load crispy_forms_tags %}
-        <div class="row">    		
-            <div class="col-sm-12">    			   			
-                <h2 class="title text-center">Contactanos <strong></strong></h2>    			    				    				
-                
-            </div>			 		
+        <div class="row">    				 		
         </div>    	
 		<div  class="container">
-			<div class="">
-				<div class="">
-                                <div class="col-sm-8">
-                                    <div class="contact-form"><!--Contacto form-->
-										<br>
-                                        <h2 class="title text-center">formulario de contacto</h2>
-										
-                                        <form  class="contact-form row"  method="post">
+			<div>
+				<div >
+					<div class="col-sm-3">    				 		
+					</div> 
+                                <div class="col-12 col-md-6 offset-md-3">
+                                    <div class="contact-form"><!--Producto form-->
+
+                                        <h2 class="title text-center">Editar Producto</h2>
+                                        <form  class="contact-form row"  method="post" enctype="multipart/form-data">
                                             {% csrf_token %}
                                             {{ form | crispy }}
-
-											<input type="submit" name="submit" class="btn btn-primary pull-right" value="Enviar">
-											
                                             
+                                            <div class="d-flex justify-content-end">
+                                                <input type="submit"  class="btn btn-primary pull-right" value="Editar">
+                                            </div>
                                         </form>
                                         
-                                    </div><!--/Contacto form-->
+                                    </div><!--/producto form-->
                                 </div>
-
-				<hr>
-				<div class="col-sm-4">
-					    <div class="contact-info">
-	    				    <h2 class="title text-center">Información de contacto</h2>
-                        
-                            <address>
-                                <ul>
-                                    <li >CiberPet</li>
-                                    <li>Huerfanos 975, Santiago</li>
-                                    <li>Chile</li>
-                                    <li>Fono +22 54 62 821</li>
-                                    <li>Email: info@ciberpet.cl</li>
-                                </ul>
-                            </address>
-	    				<div class="social-networks">
-	    					<h2 class="title text-center">Redes Sociales</h2>
-							    <ul>
-                                    <li>
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-youtube"></i></a>
-                                    </li>
-							    </ul>
-	    				    </div>
-	    			    </div>
+				
+				<div class="col-sm-3">
+					  
                     </div>
 				</div>
 				
@@ -235,7 +204,7 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{% url 'index' %}">CiberPet</a></li>
 								<li><a href="{% url 'contacto' %}">Contacto </a></li>
-								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                                <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
 								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
 								
 							</ul>
@@ -309,7 +278,7 @@
 		<script>
 			Swal.fire({
 				"title": "{{m}}",
-				"icon": "info"
+				"icon": "success"
 			})
 
 		</script>

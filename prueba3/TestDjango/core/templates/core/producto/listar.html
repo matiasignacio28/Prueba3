@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Contacto | CiberPet</title>
+    <title>Listar productos | CiberPet</title>
 
     <link href="{% static 'core/css/bootstrap.min.css'%}" rel="stylesheet">
     <link href="{% static 'core/css/font-awesome.min.css'%}" rel="stylesheet">
@@ -16,13 +16,16 @@
     <link href="{% static 'core/css/animate.css'%}" rel="stylesheet">
 	<link href="{% static 'core/css/main.css'%}" rel="stylesheet">
 	<link href="{% static 'core/css/responsive.css'%}" rel="stylesheet">
-	
-        
-    <link rel="shortcut icon" href="{% static 'core/images/ico/favicon.ico'%}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'core/images/ico/apple-touch-icon-144-precomposed.png'%}">
+	<!--link rel="stylesheet" href="{% static 'core/plugins/fuzzyComplete/css2/fuzzycomplete.css'%}"-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <!--link rel="shortcut icon" href="{% static 'core/images/ico/favicon.ico'%}"-->
+    <!--link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'core/images/ico/apple-touch-icon-144-precomposed.png'%}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'core/images/ico/apple-touch-icon-114-precomposed.png'%}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'core/images/ico/apple-touch-icon-72-precomposed.png'%}">
-    <link rel="apple-touch-icon-precomposed" href="{% static 'core/images/ico/apple-touch-icon-57-precomposed.png'%}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'core/images/ico/apple-touch-icon-57-precomposed.png'%}"-->
 </head><!--/head-->
 
 <body>
@@ -106,14 +109,14 @@
 								<li><a href="{% url 'index' %}" class="active">CiberPet</a></li>
 								
 								<li><a href="{% url 'contacto' %}">Contacto</a></li>
-								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
-								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
+                                <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                                <li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="pull-right">
-							<form id="buscadordor" action="#"></form>
+							<form id="buscadordor" action="#">
 							<input type="text" class="form-control" id="buscador" placeholder="Buscar..."/>
 							</form>
 							
@@ -134,68 +137,91 @@
 
 	</section>
 
+	{% block js %}
+	<script>
+		function eliminarProducto(id){
+			Swal.fire({
+				"title":"¿Estas seguro?",
+				"text":"esta acción no se puede deshacer",
+				"icon":"question",
+				"showCancelButton":true,
+				"cancelButtonText":"No, Cancelar",
+				"confirmButtonText":"Si, Eliminar",
+				"reverseButtons":true,
+				"confirmButtonColor":"#dc3545"
+			})
+			.then(function(result){
+				if(result.isConfirmed){
+					window.location.href = "/eliminar-producto/"+id+"/"
+				}
 
+			}) 
+		}
+
+	</script>
+
+	{% endblock %}
 	
-	<section id="form"><!--form-->
+	<section ><!--form-->
         {% load crispy_forms_tags %}
-        <div class="row">    		
-            <div class="col-sm-12">    			   			
-                <h2 class="title text-center">Contactanos <strong></strong></h2>    			    				    				
-                
-            </div>			 		
+        <div class="row"> 
+			<hr>
+            <h1 class="justify text-center">Listado de Productos</h1>   
+			<hr>
+						 		
         </div>    	
 		<div  class="container">
-			<div class="">
-				<div class="">
-                                <div class="col-sm-8">
-                                    <div class="contact-form"><!--Contacto form-->
-										<br>
-                                        <h2 class="title text-center">formulario de contacto</h2>
-										
-                                        <form  class="contact-form row"  method="post">
-                                            {% csrf_token %}
-                                            {{ form | crispy }}
+			<div>
+				<div >
+					<div class="col-sm-3">    				 		
+					</div> 
+                    
+                            <div class="table-responsive">
+                                <div class="col-12 col-md-6 offset-md-3 table">
+                                    {% load humanize %}
+                                    
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <tr>
 
-											<input type="submit" name="submit" class="btn btn-primary pull-right" value="Enviar">
-											
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th>Categoria</th>
+											<th>Ofertas</th>
+                                            <th>Modificar</th>
+                                            <th>Eliminar</th>
                                             
-                                        </form>
-                                        
-                                    </div><!--/Contacto form-->
-                                </div>
+                                            
+                                        </tr>
+                                        {% for p in entity %}
+                                        <tr>
+                                                <td>{{ p.nombreProducto }}</td>
+                                                <td>${{ p.precio | intcomma }}</td>
+                                                <td>{{ p.Categoria }}</td>
+												<td>
+													{% if p.oferta %}
+													SI
+													{% else %}
+													NO
+													{% endif %}
 
-				<hr>
-				<div class="col-sm-4">
-					    <div class="contact-info">
-	    				    <h2 class="title text-center">Información de contacto</h2>
-                        
-                            <address>
-                                <ul>
-                                    <li >CiberPet</li>
-                                    <li>Huerfanos 975, Santiago</li>
-                                    <li>Chile</li>
-                                    <li>Fono +22 54 62 821</li>
-                                    <li>Email: info@ciberpet.cl</li>
-                                </ul>
-                            </address>
-	    				<div class="social-networks">
-	    					<h2 class="title text-center">Redes Sociales</h2>
-							    <ul>
-                                    <li>
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-youtube"></i></a>
-                                    </li>
-							    </ul>
-	    				    </div>
-	    			    </div>
+												</td>
+                                                <td><a href="{% url 'modificar_producto' p.idProducto %}" class="btn btn-info btn-sm">Modificar</a></td>
+                                                <td><a href="#" onclick="eliminarProducto({{ p.idProducto }})"   class="btn btn-danger btn-sm">Eliminar</a></td>
+                                        </tr>
+
+                                        {% endfor %}
+
+                                    </table>
+                                 
+                                </div>
+                            </div>
+                            <div>
+                                {% include 'core/paginator.html' %}
+                            </div>
+
+				
+				<div class="col-sm-3">
+					  
                     </div>
 				</div>
 				
@@ -235,8 +261,8 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{% url 'index' %}">CiberPet</a></li>
 								<li><a href="{% url 'contacto' %}">Contacto </a></li>
-								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
-								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
+                                <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                                <li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
 								
 							</ul>
 						</div>
@@ -309,7 +335,7 @@
 		<script>
 			Swal.fire({
 				"title": "{{m}}",
-				"icon": "info"
+				"icon": "success"
 			})
 
 		</script>

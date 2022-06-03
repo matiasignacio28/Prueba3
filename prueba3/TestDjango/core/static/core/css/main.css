@@ -339,7 +339,7 @@ ul.sub-menu {
 **************************/
 
 #footer {
-    background: #F0F0E9;
+    background: #0a0a0a;
 
     
 
@@ -471,12 +471,12 @@ ul.sub-menu {
 }
 
 .footer-widget .container {
-    border-top: 1px solid #FFFFFF;
+    border-top: 1px solid #dfe2de;
     padding-top: 15px;
 }
 
 .single-widget h2 {
-    color: #666663;
+    color: #f1f1ed;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -490,7 +490,7 @@ ul.sub-menu {
 
 .single-widget ul li a {
 
-    color: #8C8C88;
+    color: #fffffb;
 
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -546,7 +546,7 @@ ul.sub-menu {
 }
 
 .footer-bottom {
-    background: #D6D6D0;
+    background: #2d2f38;
     padding-top: 10px;
 }
 
@@ -2480,11 +2480,7 @@ textarea {
     
 }
 
-#footer {
-    background: #F0F0E9;
-    background: url('https://source.unsplash.com/twukN12EN7c/1920x1080');
 
-}
 
 .denone {
     text-decoration: none;
