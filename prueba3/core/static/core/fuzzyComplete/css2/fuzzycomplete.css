@@ -1,0 +1,16 @@
+.fuzzyResults {
+/*  position:absolute;*/
+  display:none;
+  border: 1px solid #ccc;
+  background: rgb(238, 167, 127);    
+}
+
+.__autoitem {
+  cursor: pointer;
+  color: #FFF;
+  padding: 2px;
+}
+
+.__autoitem.selected {
+  background: rgba(250, 133, 0, 0.973);
+}

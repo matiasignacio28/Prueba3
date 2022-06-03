@@ -1,0 +1,123 @@
+[
+  {
+    "model": "core.producto",
+    "pk": 1,
+    "fields": {
+      "nombreProducto": "Bolso Transportador Huella",
+      "sku": 2123124123,
+      "precio": 18990,
+      "Categoria": 4,
+      "imagen": "productos/bolsoHuella.jpg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 2,
+    "fields": {
+      "nombreProducto": "Bolso Dise±o Flores",
+      "sku": 2123124124,
+      "precio": 19990,
+      "Categoria": 4,
+      "imagen": "productos/mochila_gris.jpg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 3,
+    "fields": {
+      "nombreProducto": "Bolso Con Dise±o Gato",
+      "sku": 2123124125,
+      "precio": 21990,
+      "Categoria": 4,
+      "imagen": "productos/bolsoGato.jpg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 4,
+    "fields": {
+      "nombreProducto": "Collar Con Luz M",
+      "sku": 2123124126,
+      "precio": 3990,
+      "Categoria": 2,
+      "imagen": "productos/Collar-con-luz-led-verde.jpg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 5,
+    "fields": {
+      "nombreProducto": "Collar Gato Reflectante Lila",
+      "sku": 2123124127,
+      "precio": 2990,
+      "Categoria": 2,
+      "imagen": "productos/collar-morado.jpg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 6,
+    "fields": {
+      "nombreProducto": "ArnÚs + Correa",
+      "sku": 2123124128,
+      "precio": 7990,
+      "Categoria": 3,
+      "imagen": "productos/morado-azul.jpg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 7,
+    "fields": {
+      "nombreProducto": "Cama iglu multicolor",
+      "sku": 2123124129,
+      "precio": 27990,
+      "Categoria": 6,
+      "imagen": "productos/cama-coloress.jpg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 8,
+    "fields": {
+      "nombreProducto": "Rasgu±ador Jirafa",
+      "sku": 2123124130,
+      "precio": 48990,
+      "Categoria": 5,
+      "imagen": "productos/42505_Catit_Zoo-scratcher-L-Giraffe_Panel-1_EN.jpeg",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 9,
+    "fields": {
+      "nombreProducto": "Collar Gato Full-Color",
+      "sku": 2123124131,
+      "precio": 6990,
+      "Categoria": 2,
+      "imagen": "",
+      "oferta": false
+    }
+  },
+  {
+    "model": "core.producto",
+    "pk": 10,
+    "fields": {
+      "nombreProducto": "Rascador rino",
+      "sku": 2123124132,
+      "precio": 40990,
+      "Categoria": 5,
+      "imagen": "",
+      "oferta": false
+    }
+  }
+
+  ]
