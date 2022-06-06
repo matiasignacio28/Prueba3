@@ -18,11 +18,7 @@
 	<link href="{% static 'core/css/responsive.css'%}" rel="stylesheet">
 	
         
-    <link rel="shortcut icon" href="{% static 'core/images/ico/favicon.ico'%}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'core/images/ico/apple-touch-icon-144-precomposed.png'%}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'core/images/ico/apple-touch-icon-114-precomposed.png'%}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'core/images/ico/apple-touch-icon-72-precomposed.png'%}">
-    <link rel="apple-touch-icon-precomposed" href="{% static 'core/images/ico/apple-touch-icon-57-precomposed.png'%}">
+    
 </head><!--/head-->
 
 <body>
@@ -71,11 +67,35 @@
 							<ul class="nav navbar-nav">
 								
 								<li><a href="{% url 'oferta' %}"><i class="fa fa-star"></i>Ofertas</a></li>
-								
+								{% block js %}
+								<script>
+									function Cerrarsesion(){
+										Swal.fire({
+											"title":"¿Estas seguro?",
+											"icon":"question",
+											"showCancelButton":true,
+											"cancelButtonText":"No, Cancelar",
+											"confirmButtonText":"Si, Cerrar Sesión",
+											"reverseButtons":true,
+											"confirmButtonColor":"#FE980F"
+										})
+										.then(function(result){
+											if(result.isConfirmed){
+												window.location.href = "{% url 'logout' %}"
+											}
+
+										}) 
+									}
+
+								</script>
+								{% endblock %}
+							
 								{% if user.is_authenticated %}
-								<li><a href="{% url 'logout' %}"><i class="fa fa-user"></i> {{ user.username }}</a></li>
+								<!--droopdown inicio sesion-->
+								<!--fin droopdown inicio sesion-->
+				 				<li><a href="#"><i class="fa fa-user"></i> {{ user.username }}</a></li>
 								
-								<li><a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Cerrar Sesión</a></li>
+								<li><a href="#"  onclick="Cerrarsesion()"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
 								{% else %}
 								
 								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Iniciar Sesión</a></li>
