@@ -26,7 +26,6 @@ class ProductoForm(forms.ModelForm):
     precio = forms.IntegerField(min_value=1, max_value=1500000)
 
 
-
     class Meta:
         model = Producto
         #fields = ['idProducto','nombreProducto','sku','precio','Categoria','imagen' ]

@@ -26,7 +26,7 @@ def index(request):
         'paginator': paginator
     }
     return render(request, 'core/index.html', data)
-
+#@login_required
 def oferta(request):
     productos = Producto.objects.filter(oferta=True)
     page = request.GET.get('page', 1)
