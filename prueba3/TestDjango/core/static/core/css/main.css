@@ -198,7 +198,7 @@ a#scrollUp i {
 }
 
 .shop-menu ul li a {
-    background: #ffffff00;
+    background: #FFFFFF;
     color: #696763;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -214,7 +214,7 @@ a#scrollUp i {
 
 .shop-menu ul li a:hover {
     color: #fe980f;
-    background: rgba(255, 255, 255, 0);
+    background: #fff;
 }
 
 .header-bottom {
@@ -284,13 +284,13 @@ ul.sub-menu {
     position: absolute;
     top: 30px;
     left: 0;
-    background: rgba(0, 0, 0, 0.445);
+    background: rgba(0, 0, 0, 0.6);
     list-style: none;
     padding: 0;
     margin: 0;
     width: 220px;
     -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 3px 3px rgba(226, 10, 10, 0);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
     display: none;
     z-index: 999;
 }
@@ -2485,3 +2485,24 @@ textarea {
 .denone {
     text-decoration: none;
   }
+  
+.justificar_parrafo{
+    justify-content: center;
+    text-align: justify;
+}
+
+.suscripcion{
+    width: 250px; 
+    height: 35px;
+
+}
+
+.password_left{
+    width: 100%;
+    text-align: left;
+}
+
+.texto_negrita{
+    font-weight: bold;
+    text-transform: capitalize;
+}

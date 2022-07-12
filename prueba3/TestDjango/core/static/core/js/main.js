@@ -9,7 +9,7 @@ var RGBChange = function () {
 };
 
 /*scroll to top*/
-
+/*
 $(document).ready(function () {
     $(function () {
         $.scrollUp({
@@ -31,10 +31,10 @@ $(document).ready(function () {
     });
 });
 
+*/
 
 
-
-$("#buscadordor").ready(function(){
+/*$("#buscadordor").ready(function(){
 
 var url = [
     {
@@ -111,7 +111,7 @@ var url = [
   $("#buscador").fuzzyComplete(url, options);
    }
 
-);  
+);  */
 
 
 

@@ -13,9 +13,6 @@
 	
     <link href="{% static 'core/css/bootstrap.min.css'%}" rel="stylesheet">
     <link href="{% static 'core/css/font-awesome.min.css'%}" rel="stylesheet">
-    <!--link href="{% static 'core/css/prettyPhoto.css'%}" rel="stylesheet"-->
-    <!--link href="{% static 'core/css/price-range.css'%}" rel="stylesheet"-->
-    <!--link href="{% static 'core/css/animate.css'%}" rel="stylesheet"-->
 	<link href="{% static 'core/css/main.css'%}" rel="stylesheet">
 	<link href="{% static 'core/css/responsive.css'%}" rel="stylesheet">
 
@@ -41,11 +38,7 @@
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus whitefont"></i></a></li>
+								
 							</ul>
 						</div>
 					</div>
@@ -71,6 +64,7 @@
 							<ul class="nav navbar-nav">
 								
 								<li><a href="{% url 'oferta' %}"><i class="fa fa-star"></i>Ofertas</a></li>
+								
 								{% block js %}
 								<script>
 									function Cerrarsesion(){
@@ -97,7 +91,7 @@
 								{% if user.is_authenticated %}
 								<!--droopdown inicio sesion-->
 								<!--fin droopdown inicio sesion-->
-				 				<li><a href="#"><i class="fa fa-user"></i> {{ user.username }}</a></li>
+				 				<li><a href="{% url 'edit_profile' %}"><i class="fa fa-user"></i> {{ user.username }}</a></li>
 								
 								<li><a href="#"  onclick="Cerrarsesion()"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
 								{% else %}
@@ -105,7 +99,7 @@
 								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Iniciar Sesión</a></li>
 								<li><a href="{% url 'registro' %}"><i class="fa fa-lock"></i> Registrate</a></li>
 								{% endif %}
-								
+								<li ><a href="{% url 'carrito' %}"><i class="fa fa-shopping-cart"></i> {{cantidad_carrito}}</a></li>
 								
 
 							</ul>
@@ -136,18 +130,24 @@
 							
 								
 								<li><a href="{% url 'contacto' %}">Contacto</a></li>
+								{% if perms.core.add_producto %}
 								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+								{% endif %}
+								{% if perms.core.view_producto %}
 								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
+								{% endif %}
+								<li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+								
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<!--div class="col-sm-3">
 						<div class="pull-right">
 							<form id="buscadordor" action="#"></form>
 							<input type="text" class="form-control" id="buscador" placeholder="Buscar..."/>
 							</form>
 							
-						</div>
+						</div-->
 						
 					</div>
 				</div>
@@ -155,7 +155,7 @@
 		</div><!--/header-bottom-->
 	</header><!--/header-->
 	
-	<section id="slider" ><!--slider-->
+	<section id="slider" ><!--slider aqui-->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -170,21 +170,21 @@
 							<div class="item active">
 								<div >
 
-									<img src="{% static 'core/images/home/perro4.jpeg'%}" class="img-responsive" alt="" />
+									<img src="{% static 'core/images/home/banner1.jpeg'%}" class="img-responsive" alt="" />
 
 								</div>
 							</div>
 							<div class="item">
 								<div class="">
 
-									<img src="{% static 'core/images/home/perro2.jpeg'%}"  class="img-responsive" alt="" />	
+									<img src="{% static 'core/images/home/banner2.jpeg'%}"  class="img-responsive" alt="" />	
 
 								</div>
 							</div>
 							<div class="item">
 								<div class="">
 
-									<img src="{% static 'core/images/home/perro5.jpeg'%}" class="img-responsive" alt="" />
+									<img src="{% static 'core/images/home/banner3.jpeg'%}" class="img-responsive" alt="" />
 
 								</div>
 							</div>
@@ -246,13 +246,13 @@
 								<div class="single-products">
 									<div class="productinfo text-center">
 										{% if p.imagen %}
-										<a href="{% url 'detalle_producto' p.idProducto %}" class="denone"><img src="{{ p.imagen.url }}" alt="imagen producto" /></a>
+										<a href="{% url 'detalle_producto' p.id %}" class="denone"><img src="{{ p.imagen.url }}" alt="imagen producto" /></a>
 										{% endif %}
 										<h2>${{ p.precio | intcomma }}</h2>
 										<p>SKU :{{ p.sku }}</p>
-										<a href="{% url 'detalle_producto' p.idProducto %}" class="denone"><p>{{ p.nombreProducto | title }}</p></a>
+										<a href="{% url 'detalle_producto' p.id %}" class="denone"><p>{{ p.nombreProducto | title }}</p></a>
 										
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carro</a>
+										<a href="{% url 'Add' p.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carro</a>
 										
 									</div>
 									
@@ -307,9 +307,13 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{% url 'index' %}">CiberPet</a></li>
 								<li><a href="{% url 'contacto' %}">Contacto </a></li>
+								<li><a href="{% url 'carrito' %}">Carro de compras </a></li>
+								{% if perms.core.add_producto %}
 								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+								{% endif %}
+								{% if perms.core.view_producto %}
 								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
-								
+								{% endif %}
 							</ul>
 						</div>
 					</div>
@@ -329,23 +333,22 @@
 						<div class="single-widget">
 							<h2>Categorias</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="AlimentoPerros.html">Alimento Perros</a></li>
-								<li><a href="AlimentoGatos.html">Alimento Gatos </a></li>
+								<li><a href="#">Alimento Perros</a></li>
+								<li><a href="#">Alimento Gatos </a></li>
 								
-								<li><a href="transporteyseguridad.html">Transporte y Seguridad</a></li>
+								<li><a href="#">Transporte y Seguridad</a></li>
 								<li><a href="{% url 'oferta' %}">Ofertas</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>Redes Sociales</h2>
+							<h2>Contactanos</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Facebook</a></li>
-								<li><a href="#">Instragram</a></li>
+						
 								<li><a href="#">+22 54 62 821</a></li>
 								<li><a href="#">info@ciberpet.cl</a></li>
-								<li><a href="#">Tik Tok</a></li>
+							
 							</ul>
 						</div>
 					</div>
@@ -365,7 +368,7 @@
 	</footer><!--/Footer-->
 	
 
-	
+  
     <script src="{% static 'core/js/jquery.js'%}"></script>
 	<script src="{% static 'core/js/bootstrap.min.js'%}"></script>
 	<!--script src="{% static 'core/js/jquery.scrollUp.min.js'%}"></script-->
