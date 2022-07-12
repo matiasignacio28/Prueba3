@@ -1,0 +1,89 @@
+[
+    {
+      "model": "user.user",
+      "pk": 2,
+      "fields": {
+        "password": "pbkdf2_sha256$320000$WT6zQLYiHGd98GrpP2CIbF$v9cgAlfrhwPfTAuBPlfqIKA9jWLy5wseAZy2coK9hcg=",
+        "last_login": "2022-06-19T00:33:57.561Z",
+        "is_superuser": false,
+        "username": "cliente",
+        "first_name": "matias",
+        "last_name": "Arias Orellana",
+        "email": "mat.orellana@duocuc.cl",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-06-18T20:30:33.002Z",
+        "suscripcion": false,
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "user.user",
+      "pk": 3,
+      "fields": {
+        "password": "pbkdf2_sha256$320000$ScDAcbei2M3GpKpATOa9M7$2GEjbNecqQSE4HQmJrXqkx0Mfq7+avm2R1f/8/s8eQs=",
+        "last_login": "2022-06-19T00:34:46.404Z",
+        "is_superuser": false,
+        "username": "vendedor",
+        "first_name": "Jennifer",
+        "last_name": "Alfaro Bustos",
+        "email": "je.alfaro@duocuc.cl",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-06-18T20:31:28Z",
+        "suscripcion": false,
+        "groups": [],
+        "user_permissions": [
+          12
+        ]
+      }
+    },
+    {
+      "model": "user.user",
+      "pk": 4,
+      "fields": {
+        "password": "pbkdf2_sha256$320000$1XtTLwZmVTVDwiTS4jqAOI$OCxKpmem85fp6O7jQTxWq7X+pWKoel2CvbhecmpE2Ds=",
+        "last_login": "2022-06-18T21:15:46.384Z",
+        "is_superuser": false,
+        "username": "administrador",
+        "first_name": "Angelo",
+        "last_name": "Maluenda Mendoza",
+        "email": "ang.maluenda@duocuc.cl",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-06-18T20:33:03Z",
+        "suscripcion": false,
+        "groups": [],
+        "user_permissions": [
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "model": "user.user",
+      "pk": 5,
+      "fields": {
+        "password": "pbkdf2_sha256$320000$TBj6OTUUqE93rtgKJJKszk$ZPmHDhp1T0tx3pBOKTtdbZ7ouaR3M4HSAoMi5Lcr964=",
+        "last_login": "2022-06-18T21:17:45Z",
+        "is_superuser": false,
+        "username": "bodega",
+        "first_name": "auron",
+        "last_name": "play",
+        "email": "auron@auron.cl",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-06-18T21:17:44Z",
+        "suscripcion": false,
+        "groups": [],
+        "user_permissions": [
+          9,
+          10,
+          12
+        ]
+      }
+    }
+    ]

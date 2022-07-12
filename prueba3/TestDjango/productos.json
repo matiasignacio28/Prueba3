@@ -6,7 +6,7 @@
       "nombreProducto": "Bolso Transportador Huella",
       "sku": 2123124123,
       "precio": 18990,
-      "Categoria": 4,
+      "categoria": 4,
       "imagen": "productos/bolsoHuella.jpg",
       "oferta": false
     }
@@ -18,7 +18,7 @@
       "nombreProducto": "Bolso Dise±o Flores",
       "sku": 2123124124,
       "precio": 19990,
-      "Categoria": 4,
+      "categoria": 4,
       "imagen": "productos/mochila_gris.jpg",
       "oferta": false
     }
@@ -30,7 +30,7 @@
       "nombreProducto": "Bolso Con Dise±o Gato",
       "sku": 2123124125,
       "precio": 21990,
-      "Categoria": 4,
+      "categoria": 4,
       "imagen": "productos/bolsoGato.jpg",
       "oferta": false
     }
@@ -42,7 +42,7 @@
       "nombreProducto": "Collar Con Luz M",
       "sku": 2123124126,
       "precio": 3990,
-      "Categoria": 2,
+      "categoria": 2,
       "imagen": "productos/Collar-con-luz-led-verde.jpg",
       "oferta": false
     }
@@ -54,7 +54,7 @@
       "nombreProducto": "Collar Gato Reflectante Lila",
       "sku": 2123124127,
       "precio": 2990,
-      "Categoria": 2,
+      "categoria": 2,
       "imagen": "productos/collar-morado.jpg",
       "oferta": false
     }
@@ -66,7 +66,7 @@
       "nombreProducto": "ArnÚs + Correa",
       "sku": 2123124128,
       "precio": 7990,
-      "Categoria": 3,
+      "categoria": 3,
       "imagen": "productos/morado-azul.jpg",
       "oferta": false
     }
@@ -78,7 +78,7 @@
       "nombreProducto": "Cama iglu multicolor",
       "sku": 2123124129,
       "precio": 27990,
-      "Categoria": 6,
+      "categoria": 6,
       "imagen": "productos/cama-coloress.jpg",
       "oferta": false
     }
@@ -90,7 +90,7 @@
       "nombreProducto": "Rasgu±ador Jirafa",
       "sku": 2123124130,
       "precio": 48990,
-      "Categoria": 5,
+      "categoria": 5,
       "imagen": "productos/42505_Catit_Zoo-scratcher-L-Giraffe_Panel-1_EN.jpeg",
       "oferta": false
     }
@@ -102,7 +102,7 @@
       "nombreProducto": "Collar Gato Full-Color",
       "sku": 2123124131,
       "precio": 6990,
-      "Categoria": 2,
+      "categoria": 2,
       "imagen": "",
       "oferta": false
     }
@@ -114,7 +114,7 @@
       "nombreProducto": "Rascador rino",
       "sku": 2123124132,
       "precio": 40990,
-      "Categoria": 5,
+      "categoria": 5,
       "imagen": "",
       "oferta": false
     }

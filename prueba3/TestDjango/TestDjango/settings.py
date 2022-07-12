@@ -47,8 +47,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'django.contrib.humanize',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'api_mascota',
+    'user',
 ]
-
+"""
+#authentificacion de manera global
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
+"""
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
@@ -74,6 +88,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.total_carrito',
+                'core.context_processors.iva_carrito',
+                'core.context_processors.subtotal_carrito',
+                'core.context_processors.cantidad_carrito',
             ],
         },
     },
@@ -89,7 +107,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/xe',
-        'USER': 'c##prueba2',
+        'USER': 'c##prueba',
         'PASSWORD': 'prueba',
         'TEST': {
             'USER': 'default_test',
@@ -136,12 +154,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+AUTH_USER_MODEL = 'user.User'
 STATIC_URL = 'static/'
 
 import os 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
+
+
 
 
 

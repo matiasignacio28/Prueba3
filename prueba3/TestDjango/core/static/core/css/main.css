@@ -2485,3 +2485,24 @@ textarea {
 .denone {
     text-decoration: none;
   }
+  
+.justificar_parrafo{
+    justify-content: center;
+    text-align: justify;
+}
+
+.suscripcion{
+    width: 250px; 
+    height: 35px;
+
+}
+
+.password_left{
+    width: 100%;
+    text-align: left;
+}
+
+.texto_negrita{
+    font-weight: bold;
+    text-transform: capitalize;
+}

@@ -40,11 +40,7 @@
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus whitefont"></i></a></li>
+								
 							</ul>
 						</div>
 					</div>
@@ -96,7 +92,7 @@
 								{% if user.is_authenticated %}
 								<!--droopdown inicio sesion-->
 								<!--fin droopdown inicio sesion-->
-				 				<li><a href="#"><i class="fa fa-user"></i> {{ user.username }}</a></li>
+				 				<li><a href="{% url 'edit_profile' %}"><i class="fa fa-user"></i> {{ user.username }}</a></li>
 								
 								<li><a href="#"  onclick="Cerrarsesion()"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
 								{% else %}
@@ -104,6 +100,7 @@
 								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Iniciar Sesión</a></li>
 								<li><a href="{% url 'registro' %}"><i class="fa fa-lock"></i> Registrate</a></li>
 								{% endif %}
+								<li ><a href="{% url 'carrito' %}"><i class="fa fa-shopping-cart"></i> {{cantidad_carrito}}</a></li>
 								
 								
 
@@ -135,18 +132,23 @@
 							
 								
 								<li><a href="{% url 'contacto' %}">Contacto</a></li>
+								{% if perms.core.add_producto %}
 								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+								{% endif %}
+								{% if perms.core.view_producto %}
 								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
+								{% endif %}
+								<li><a href="{% url 'nosotros' %}">Nosotros</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="pull-right">
+						<!--div class="pull-right">
 							<form id="buscadordor" action="#"></form>
 							<input type="text" class="form-control" id="buscador" placeholder="Buscar..."/>
 							</form>
 							
-						</div>
+						</div-->
 						
 					</div>
 				</div>
@@ -207,18 +209,17 @@
 								<!--img src="{% static 'core/images/product-details/new.jpg'%}" class="newarrival" alt="" /-->
 								<h2>{{ producto.nombreProducto }}</h2>
 								<p>SKU: {{ producto.sku}}</p>
-								<img src="{% static 'core/images/product-details/rating.png'%}" alt="" />
+								
 								<span>
 									<span>${{ producto.precio | intcomma }}</span>
-									<label>Cantidad:</label>
-									<input type="text" value="1" />
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Agregar al carro
-									</button>
+									<!--label>Cantidad:</label>
+									<input type="text" value="1" /-->
+									
+									<a href="{% url 'Add' producto.id %}" class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Agregar al carro</a>
 								</span>
 								
 								<a href=""><img src="{% static 'core/images/product-details/share.png'%}" class="share img-responsive"  alt="" /></a>
+								<img src="{% static 'core/images/product-details/rating.png'%}" alt="" />
 							</div><!--/product-information-->
 							
 						</div>
@@ -249,7 +250,7 @@
 	</section>
     <br><br><br><br>
 	
-	<footer id="footer" ><!--Footer-->
+	<footer id="footer"><!--Footer-->
 		<div class="footer-top" >
 
 			
@@ -278,9 +279,13 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{% url 'index' %}">CiberPet</a></li>
 								<li><a href="{% url 'contacto' %}">Contacto </a></li>
+								<li><a href="{% url 'carrito' %}">Carro de compras </a></li>
+								{% if perms.core.add_producto %}
 								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+								{% endif %}
+								{% if perms.core.view_producto %}
 								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
-								
+								{% endif %}
 							</ul>
 						</div>
 					</div>
@@ -310,13 +315,12 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>Redes Sociales</h2>
+							<h2>Contactanos</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Facebook</a></li>
-								<li><a href="#">Instragram</a></li>
+						
 								<li><a href="#">+22 54 62 821</a></li>
 								<li><a href="#">info@ciberpet.cl</a></li>
-								<li><a href="#">Tik Tok</a></li>
+							
 							</ul>
 						</div>
 					</div>
@@ -324,7 +328,7 @@
 			</div>
 		</div>
 		
-		<div >
+		<div class="">
 			<div class="container">
 				<div class="row">
 					

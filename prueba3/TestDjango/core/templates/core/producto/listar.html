@@ -46,11 +46,7 @@
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble whitefont"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus whitefont"></i></a></li>
+								
 							</ul>
 						</div>
 					</div>
@@ -63,8 +59,10 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
+							
 
 							<a href="{% url 'index' %}"><img src="{% static 'core/images/home/logofinal.jpeg'%}" class="img-fluid tlogo" alt="" /></a>
+
 
 						</div>
 					
@@ -74,7 +72,7 @@
 							<ul class="nav navbar-nav">
 								
 								<li><a href="{% url 'oferta' %}"><i class="fa fa-star"></i>Ofertas</a></li>
-								{% block js1 %}
+								{% block js %}
 								<script>
 									function Cerrarsesion(){
 										Swal.fire({
@@ -100,7 +98,7 @@
 								{% if user.is_authenticated %}
 								<!--droopdown inicio sesion-->
 								<!--fin droopdown inicio sesion-->
-				 				<li><a href="#"><i class="fa fa-user"></i> {{ user.username }}</a></li>
+				 				<li><a href="{% url 'edit_profile' %}"><i class="fa fa-user"></i> {{ user.username }}</a></li>
 								
 								<li><a href="#"  onclick="Cerrarsesion()"><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
 								{% else %}
@@ -108,13 +106,19 @@
 								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Iniciar Sesión</a></li>
 								<li><a href="{% url 'registro' %}"><i class="fa fa-lock"></i> Registrate</a></li>
 								{% endif %}
+								<li ><a href="{% url 'carrito' %}"><i class="fa fa-shopping-cart"></i> {{cantidad_carrito}}</a></li>
+								
+								
+
 							</ul>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
+		
+								
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -131,20 +135,26 @@
 							<ul class="nav navbar-nav collapse navbar-collapse">
 
 								<li><a href="{% url 'index' %}" class="active">CiberPet</a></li>
+							
 								
 								<li><a href="{% url 'contacto' %}">Contacto</a></li>
-                                <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
-                                <li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
+								{% if perms.core.add_producto %}
+								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+								{% endif %}
+								{% if perms.core.view_producto %}
+								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
+								{% endif %}
+								<li><a href="{% url 'nosotros' %}">Nosotros</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="pull-right">
-							<form id="buscadordor" action="#">
+						<!--div class="pull-right">
+							<form id="buscadordor" action="#"></form>
 							<input type="text" class="form-control" id="buscador" placeholder="Buscar..."/>
 							</form>
 							
-						</div>
+						</div-->
 						
 					</div>
 				</div>
@@ -161,7 +171,7 @@
 
 	</section>
 
-	{% block js %}
+	{% block js1 %}
 	<script>
 		function eliminarProducto(id){
 			Swal.fire({
@@ -211,8 +221,12 @@
                                             <th>Precio</th>
                                             <th>Categoria</th>
 											<th>Ofertas</th>
+											{% if perms.core.change_producto %}
                                             <th>Modificar</th>
+											{% endif %}
+											{% if perms.core.delete_producto %}
                                             <th>Eliminar</th>
+											{% endif %}
                                             
                                             
                                         </tr>
@@ -220,7 +234,7 @@
                                         <tr>
                                                 <td>{{ p.nombreProducto }}</td>
                                                 <td>${{ p.precio | intcomma }}</td>
-                                                <td>{{ p.Categoria }}</td>
+                                                <td>{{ p.categoria }}</td>
 												<td>
 													{% if p.oferta %}
 													SI
@@ -229,8 +243,12 @@
 													{% endif %}
 
 												</td>
-                                                <td><a href="{% url 'modificar_producto' p.idProducto %}" class="btn btn-info btn-sm">Modificar</a></td>
-                                                <td><a href="#" onclick="eliminarProducto({{ p.idProducto }})"   class="btn btn-danger btn-sm">Eliminar</a></td>
+												{% if perms.core.change_producto %}
+                                                <td><a href="{% url 'modificar_producto' p.id %}" class="btn btn-info btn-sm">Modificar</a></td>
+												{% endif %}
+                                                {% if perms.core.delete_producto %}
+												<td><a href="#" onclick="eliminarProducto({{ p.id }})"   class="btn btn-danger btn-sm">Eliminar</a></td>
+												{% endif %}
                                         </tr>
 
                                         {% endfor %}
@@ -256,7 +274,7 @@
 	
 	
 
-	<footer id="footer" ><!--Footer-->
+	<footer id="footer"><!--Footer-->
 		<div class="footer-top" >
 
 			
@@ -285,9 +303,13 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="{% url 'index' %}">CiberPet</a></li>
 								<li><a href="{% url 'contacto' %}">Contacto </a></li>
-                                <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
-                                <li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
-								
+								<li><a href="{% url 'carrito' %}">Carro de compras </a></li>
+								{% if perms.core.add_producto %}
+								<li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+								{% endif %}
+								{% if perms.core.view_producto %}
+								<li><a href="{% url 'listar_productos' %}">Listar Producto</a></li>
+								{% endif %}
 							</ul>
 						</div>
 					</div>
@@ -317,13 +339,12 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>Redes Sociales</h2>
+							<h2>Contactanos</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Facebook</a></li>
-								<li><a href="#">Instragram</a></li>
+						
 								<li><a href="#">+22 54 62 821</a></li>
 								<li><a href="#">info@ciberpet.cl</a></li>
-								<li><a href="#">Tik Tok</a></li>
+							
 							</ul>
 						</div>
 					</div>
@@ -331,7 +352,7 @@
 			</div>
 		</div>
 		
-		<div >
+		<div class="">
 			<div class="container">
 				<div class="row">
 					

@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken import views
 
 
 urlpatterns = [
@@ -25,6 +26,8 @@ urlpatterns = [
     path('', include('core.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('api/', include('api_mascota.urls')),
+    path('api_generate_token', views.obtain_auth_token),
 ]
 
 
